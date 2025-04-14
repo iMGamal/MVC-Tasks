@@ -1,0 +1,48 @@
+﻿@model StudentViewModel
+@{
+    ViewData["Title"] = "Student Grades";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title mb-0">@Model.FullName</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            @if (!string.IsNullOrEmpty(Model.Image))
+                            {
+                                <img src="@Model.Image" alt="@Model.FullName" class="img-fluid rounded mb-3" style="max-height: 200px;" />
+                            }
+                            else
+                            {
+                                <img src="/images/default-student.jpg" alt="Default" class="img-fluid rounded mb-3" style="max-height: 200px;" />
+                            }
+                        </div>
+                        <div class="col-md-8">
+                            <h4>Grades</h4>
+                            @if (Model.CoursesNames != null && Model.CoursesNames.Any())
+                            {
+                                <dl class="list-group">
+                                    @for (int i = 0; i < Model.CoursesNames.Count; i++)
+                                    {
+                                        <dt class="list-group-item">@Model.CoursesNames[i]</dt>
+                                        <dd class="list-group-item @(Model.Grades[i] >= 60 ? "text-success" : "text-danger")">
+                                            @Model.Grades[i]
+                                        </dd>
+                                    }
+                                </dl>
+                            }
+                            else
+                            {
+                                <p class="text-muted">This student is not enrolled in any courses.</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

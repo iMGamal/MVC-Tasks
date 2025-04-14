@@ -8,17 +8,21 @@
 
 <table class="table table-striped table-hover table-bordered">
 	<thead>
-		<th scope="col">@Html.DisplayNameFor(m => m.Id)</th>
+		<th scope="col">@Html.DisplayNameFor(m => m.Image)</th>
+		<th scope="col">ID</th>
 		<th scope="col">@Html.DisplayNameFor(m => m.Name)</th>
 		<th scope="col">@Html.DisplayNameFor(m => m.Age)</th>
 		<th scope="col">@Html.DisplayNameFor(m => m.Address)</th>
-		<th scope="col">@Html.DisplayNameFor(m => m.Image)</th>
+		<th scope="col">Actions</th>
 	</thead>
 	<tbody>
+		<td><img src="@Model.Image" alt="@Model.Name" class="img-fluid rounded mb-3" style="max-height: 200px;" /></td>
 		<td>@Html.DisplayFor(m => m.Id)</td>
 		<td>@Html.DisplayFor(m => m.Name)</td>
 		<td>@Html.DisplayFor(m => m.Age)</td>
 		<td>@Html.DisplayFor(m => m.Address)</td>
-		<td>@Html.DisplayFor(m => m.Image)</td>
+		<td>
+			<a class="btn btn-primary" asp-controller="Student" asp-action="Grades" asp-route-id="@Model.Id">Grades</a>
+		</td>
 	</tbody>
 </table>

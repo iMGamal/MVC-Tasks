@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Instructor>
+@{
+	ViewData["Titlte"] = "Instructors Index";
+}
+
+<h1>Instructors:</h1>
+<hr />
+
+<table class="table table-striped table-hover table-bordered">
+	<thead>
+		<th scope="col">ID</th>
+		<th scope="col">First Name</th>
+		<th scope="col">Actions</th>
+	</thead>
+	<tbody>
+		@foreach (var instructor in Model)
+		{
+			<tr>
+				<td>@instructor.Id</td>
+				<td>@instructor.FName</td>
+				<td><a class="btn btn-primary" asp-controller="Instructor" asp-action="Details" asp-route-id="@instructor.Id">Details</a></td>
+			</tr>
+		}
+	</tbody>
+</table>

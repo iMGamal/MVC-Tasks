@@ -9,16 +9,9 @@ namespace Tasks.Models
         public int Age { get; set; }
         public string Address { get; set; }
 
-        private readonly ApplicationDB _context;
+        public int DepartmentId { get; set; }
+        public Department Department { get; set; }
 
-        public IEnumerable<Student> Index()
-        {
-            return _context.Students.ToList();
-        }
-
-        public Student Details(int id)
-        {
-            return _context.Students.FirstOrDefault(s => s.Id == id);
-        }
+        public ICollection<StudentCourse> StudentCourses { get; set; }
     }
 }
